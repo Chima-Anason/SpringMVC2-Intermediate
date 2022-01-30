@@ -9,7 +9,7 @@ public class LoveCalculatorApplicationInitializer implements WebApplicationIniti
 
 	@Override
 	public void onStartup(ServletContext servletContext) throws ServletException {
-		// TODO Auto-generated method stub
+		System.out.println("my custom class onStartUp method called.....Chima");
 
 	}
 
