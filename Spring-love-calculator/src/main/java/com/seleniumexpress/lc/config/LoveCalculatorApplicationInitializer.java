@@ -2,6 +2,7 @@ package com.seleniumexpress.lc.config;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
+import javax.servlet.ServletRegistration;
 
 import org.springframework.web.WebApplicationInitializer;
 import org.springframework.web.context.support.XmlWebApplicationContext;
@@ -20,8 +21,10 @@ public class LoveCalculatorApplicationInitializer implements WebApplicationIniti
 		DispatcherServlet dispatcherServlet = new DispatcherServlet(webApplicationContext);
 		
 		//Register dispatcher servlet with servlet context
-		servletContext.addServlet("myDispatcherServlet", dispatcherServlet);
+		ServletRegistration.Dynamic myCustomDispatcherServlet = servletContext.addServlet("myDispatcherServlet", dispatcherServlet);
 
+		myCustomDispatcherServlet.setLoadOnStartup(1);
+		myCustomDispatcherServlet.addMapping("/mywebsite.com/*");
 	}
 
 }
