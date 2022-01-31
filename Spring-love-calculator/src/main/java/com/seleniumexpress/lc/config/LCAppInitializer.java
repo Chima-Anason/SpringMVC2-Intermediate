@@ -12,14 +12,14 @@ public class LCAppInitializer extends AbstractAnnotationConfigDispatcherServletI
 
 	@Override
 	protected Class<?>[] getServletConfigClasses() {
-		// TODO Auto-generated method stub
-		return null;
+		Class arr[] = {LoveCalculatorAppConfig.class};
+		return arr;
 	}
 
 	@Override
 	protected String[] getServletMappings() {
-		// TODO Auto-generated method stub
-		return null;
+		String arr[] = {"/mywebsite.com/*"};
+		return arr;
 	}
 
 }
