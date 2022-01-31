@@ -10,9 +10,11 @@ import org.springframework.web.context.support.AnnotationConfigWebApplicationCon
 import org.springframework.web.context.support.XmlWebApplicationContext;
 import org.springframework.web.servlet.DispatcherServlet;
 
-public class LoveCalculatorApplicationInitializer implements WebApplicationInitializer {
 
-	@Override
+//this class uses Approach1 so it can be deleted when using Approach2
+public class LoveCalculatorApplicationInitializer //implements WebApplicationInitializer 
+{
+
 	public void onStartup(ServletContext servletContext) throws ServletException {
 		
 		AnnotationConfigWebApplicationContext webApplicationContext = new AnnotationConfigWebApplicationContext();
