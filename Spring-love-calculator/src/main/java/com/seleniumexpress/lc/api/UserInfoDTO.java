@@ -4,8 +4,9 @@ package com.seleniumexpress.lc.api;
 //NB: Text box name must be = property name 
 public class UserInfoDTO {
 	
-	private String userName;
-	private String crushName;
+	//Two-Way-Data-Binding(To Read and Write)
+	private String userName = "Mr X";
+	private String crushName = "Miss Y";
 	
 	
 	public String getUserName() {
