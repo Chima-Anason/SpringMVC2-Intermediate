@@ -14,12 +14,12 @@ public class LCAppController {
 		return "home-page";
 	}
 	
-	
+	//NB:The @RequestParam using bracket u can put the textbox name in bracket and give it a diff variable name
 	@RequestMapping("/process-homepage")
-	private String showResultPage(@RequestParam String userName,@RequestParam String crushName) {
+	private String showResultPage(@RequestParam("userName") String userName1,@RequestParam("crushName") String crushName1) {
 		
-		System.out.println("user name Name is : "+userName);
-		System.out.println("crush name Name is : "+crushName);
+		System.out.println("user name Name is : "+userName1);
+		System.out.println("crush name Name is : "+crushName1);
 		return "result-page";
 		
 	}
