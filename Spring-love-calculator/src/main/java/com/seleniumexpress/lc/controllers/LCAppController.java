@@ -5,6 +5,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.seleniumexpress.lc.api.UserInfoDTO;
+
 @Controller
 public class LCAppController {
 
@@ -15,15 +17,20 @@ public class LCAppController {
 		return "home-page";
 	}
 	
-	//NB:The @RequestParam using bracket u can put the textbox name in bracket and give it a diff variable name
+
+	/*
+	 * STEP 2: Using DTO and Creating DTO object
+	 * use the captured object to call each property at the view page
+	 * after inputting data on the Form the spring internally calls the setter method
+	 */
 	@RequestMapping("/process-homepage")
-	private String showResultPage(@RequestParam("userName") String userName1,@RequestParam("crushName") String crushName1, Model model) {
+	private String showResultPage(UserInfoDTO userInfoDTO, Model model) {
 		
-		System.out.println("user name Name is : "+userName1);
-		System.out.println("crush name Name is : "+crushName1);
+		System.out.println("user name Name is : "+userInfoDTO.getUserName());
+		System.out.println("crush name Name is : "+userInfoDTO.getCrushName());
 		
-		model.addAttribute("userName", userName1);
-		model.addAttribute("crushName", crushName1);
+		model.addAttribute("userInfoDTO", userInfoDTO);
+		
 		return "result-page";
 		
 	}
