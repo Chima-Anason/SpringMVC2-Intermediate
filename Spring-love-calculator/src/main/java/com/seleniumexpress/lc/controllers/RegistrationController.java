@@ -15,5 +15,11 @@ public class RegistrationController {
 		return "user-registration-page";
 		
 	}
+	
+	@RequestMapping("/registration-success")
+	public String processUserRegistration(@ModelAttribute("userReg") UserRegistrationDTO dto) {
+		
+		return "registration-success-page";
+	}
 
 }
