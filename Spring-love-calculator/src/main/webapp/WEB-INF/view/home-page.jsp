@@ -42,7 +42,7 @@
 
 	<h1 align="center">LOVE CALCULATOR</h1>
 	<hr>
-	<form:form action="process-homepage" method="get" modelAttribute="userInfo">
+	<form:form action="process-homepage" method="get" modelAttribute="userInfo" onsubmit="return validateTextbox()">
 		<div align="center">
 			<p>
 				<label for="yn">Your Name :</label>
