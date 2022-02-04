@@ -1,12 +1,24 @@
 package com.seleniumexpress.lc.api;
 
+import javax.validation.constraints.AssertTrue;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
-//NB: Text box name must be = property name 
+//Spring MVC Form validation 
 public class UserInfoDTO {
 	
-	//Two-Way-Data-Binding(To Read and Write)
+	@NotBlank(message =" * User name can't be blank")
+	@Size(min = 3,max = 15,message = " * Your name should have char between 3-15")
 	private String userName;
+	
+	@NotBlank(message =" * Crush name can't be blank")
+	@Size(min = 3,max = 15,message = " * Crush name should have char between 3-15")
 	private String crushName;
+	
+	@AssertTrue(message = "You have to agree to use our application")
+	private boolean termAndCondition;
+	
+	
 	
 	
 	public String getUserName() {
@@ -21,6 +33,15 @@ public class UserInfoDTO {
 	public void setCrushName(String crushName) {
 		this.crushName = crushName;
 	}
+	
+	
+	public boolean isTermAndCondition() {
+		return termAndCondition;
+	}
+	public void setTermAndCondition(boolean termAndCondition) {
+		this.termAndCondition = termAndCondition;
+	}
+	
 	
 	
 	@Override

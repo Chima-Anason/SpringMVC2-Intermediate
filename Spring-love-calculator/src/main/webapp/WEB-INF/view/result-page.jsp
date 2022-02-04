@@ -11,8 +11,8 @@
 	<h1 align="center">Love Calculator</h1>
 	<hr>
 
-	<p>User Name is : ${userInfoDTO.userName}</p>
-	<p>Crush Name is : ${userInfoDTO.crushName}</p>
+	<p>User Name is : ${userInfo.userName}</p>
+	<p>Crush Name is : ${userInfo.crushName}</p>
 	
 </body>
 </html>
