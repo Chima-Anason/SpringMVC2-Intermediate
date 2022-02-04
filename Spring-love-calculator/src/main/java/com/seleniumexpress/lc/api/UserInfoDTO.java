@@ -5,8 +5,8 @@ package com.seleniumexpress.lc.api;
 public class UserInfoDTO {
 	
 	//Two-Way-Data-Binding(To Read and Write)
-	private String userName = "Mr X";
-	private String crushName = "Miss Y";
+	private String userName;
+	private String crushName;
 	
 	
 	public String getUserName() {
