@@ -53,8 +53,20 @@
 		
 		<br />
 		
-		<input type="submit" value="register">
-      </div>
+		</div>
+		
+		<div align="center">
+			<h3>Communication</h3>
+			
+			<label>Email :</label>
+			<form:input path="communicationDTO.email"/>
+		</div>
+		
+		<div align="center">
+			<input type="submit" value="register">
+		</div>
+		
+      
 
 	</form:form>
 

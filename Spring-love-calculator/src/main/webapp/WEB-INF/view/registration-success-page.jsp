@@ -23,6 +23,10 @@
 
 	<br /> 
 	Gender: ${userReg.gender}
+	
+	<br /> 
+	Email: ${userReg.communicationDTO.email}
+	
 
 </body>
 </html>
