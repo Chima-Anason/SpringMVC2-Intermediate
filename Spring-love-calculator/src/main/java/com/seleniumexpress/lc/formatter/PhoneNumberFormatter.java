@@ -27,24 +27,33 @@ public class PhoneNumberFormatter implements Formatter<Phone> {
 	
 	@Override
 	public Phone parse(String completePhoneNumber, Locale locale) throws ParseException {
-		
-		
+
 		System.out.println("Inside the parse method of the PhoneNuberFormatter class");
-		
-		//logic to convert string to phone object
-		//First: Split the String received from the user
-		String[] phoneNumberArray = completePhoneNumber.split("-");
-		
-		
-		
-		//second: Extract the countryCode and phoneNumber then set it to the Phone class countryCode and phoneNumber property
+
+		// logic to convert string to phone object
+
 		Phone phone = new Phone();
-		
-		phone.setCountryCode(phoneNumberArray[0]);
-		phone.setUserNumber(phoneNumberArray[1]);;
-		
-		
-		
+
+		// Split the String received from the user
+		String[] phoneNumberArray = completePhoneNumber.split("-");
+
+		// Check whether the string number has -
+		int index = completePhoneNumber.indexOf('-');
+		if (index == -1) {
+
+			// if '-' is not found, then add 91 as the default country code
+			phone.setCountryCode("91");
+			phone.setUserNumber(phoneNumberArray[0]);
+			;
+
+		} else {
+
+			// Extract the countryCode and phoneNumber then set it to the Phone class countryCode and phoneNumber property
+			phone.setCountryCode(phoneNumberArray[0]);
+			phone.setUserNumber(phoneNumberArray[1]);
+
+		}
+
 		return phone;
 	}
 
