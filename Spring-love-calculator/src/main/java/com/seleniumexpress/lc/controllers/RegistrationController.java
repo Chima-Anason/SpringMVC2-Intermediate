@@ -24,7 +24,7 @@ public class RegistrationController {
 		
 		System.out.println("Inside processUserRegistration Method");
 		
-		
+
 		return "registration-success-page";
 	}
 
