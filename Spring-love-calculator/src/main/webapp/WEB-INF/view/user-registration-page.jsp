@@ -58,8 +58,11 @@
 		<div align="center">
 			<h3>Communication</h3>
 			
-			<label>Email :</label>
+			<label>Email</label>
 			<form:input path="communicationDTO.email"/>
+			
+			<label>Phone</label>
+			<form:input path="communicationDTO.phone"/>
 		</div>
 		
 		<div align="center">
