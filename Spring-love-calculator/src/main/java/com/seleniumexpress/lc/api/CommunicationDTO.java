@@ -2,7 +2,7 @@ package com.seleniumexpress.lc.api;
 
 public class CommunicationDTO {
 	
-	private String email = "test@test.com";
+	private String email;
 	
 	//Creating a Phone number consisting of {countryCode + userNumber}
 	private Phone phone;

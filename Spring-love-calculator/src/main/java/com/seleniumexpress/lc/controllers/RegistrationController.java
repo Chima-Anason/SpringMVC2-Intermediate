@@ -12,12 +12,18 @@ public class RegistrationController {
 	@RequestMapping("/register")
 	public String showRegistrationPage(@ModelAttribute("userReg") UserRegistrationDTO dto) {
 		
+		System.out.println("Inside showRegistrationPage Method");
+		
 		return "user-registration-page";
 		
 	}
 	
 	@RequestMapping("/registration-success")
 	public String processUserRegistration(@ModelAttribute("userReg") UserRegistrationDTO dto) {
+		
+		
+		System.out.println("Inside processUserRegistration Method");
+		
 		
 		return "registration-success-page";
 	}
