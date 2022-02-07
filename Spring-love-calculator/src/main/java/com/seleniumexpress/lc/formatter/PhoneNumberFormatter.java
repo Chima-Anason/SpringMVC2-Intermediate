@@ -39,12 +39,18 @@ public class PhoneNumberFormatter implements Formatter<Phone> {
 
 		// Check whether the string number has -
 		int index = completePhoneNumber.indexOf('-');
-		if (index == -1) {
+		
+		if (index == -1 || completePhoneNumber.startsWith("-")) {
 
-			// if '-' is not found, then add 91 as the default country code
+			// if '-' is not found or starts with '-', then add 91 as the default country code
 			phone.setCountryCode("91");
-			phone.setUserNumber(phoneNumberArray[0]);
-			;
+			
+			if(completePhoneNumber.startsWith("-")) {
+				phone.setUserNumber(phoneNumberArray[1]);
+			}else {
+				phone.setUserNumber(phoneNumberArray[0]);
+			}
+
 
 		} else {
 
