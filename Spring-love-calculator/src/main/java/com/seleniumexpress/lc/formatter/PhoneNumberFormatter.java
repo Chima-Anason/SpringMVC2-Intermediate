@@ -10,9 +10,17 @@ import com.seleniumexpress.lc.api.Phone;
 public class PhoneNumberFormatter implements Formatter<Phone> {
 
 	@Override
-	public String print(Phone object, Locale locale) {
+	public String print(Phone phone, Locale locale) {
 		// TODO Auto-generated method stub
-		return null;
+		
+		System.out.println("Inside the print method of the PhoneNuberFormatter class");
+		//logic to convert phone object to string
+		
+		
+		//concatinate the countryCode and the PhoneNumber and return it
+		
+		
+		return phone.getCountryCode() + "-" + phone.getUserNumber();
 	}
 
 	
@@ -21,15 +29,15 @@ public class PhoneNumberFormatter implements Formatter<Phone> {
 	public Phone parse(String completePhoneNumber, Locale locale) throws ParseException {
 		
 		
-		System.out.println("Inside the parse method of the PhoneNuberFormatter");
+		System.out.println("Inside the parse method of the PhoneNuberFormatter class");
 		
-		//logic here
+		//logic to convert string to phone object
 		//First: Split the String received from the user
 		String[] phoneNumberArray = completePhoneNumber.split("-");
 		
 		
 		
-		//second: Extract the countryCode and set it to the Phone class countryCode property
+		//second: Extract the countryCode and phoneNumber then set it to the Phone class countryCode and phoneNumber property
 		Phone phone = new Phone();
 		
 		phone.setCountryCode(phoneNumberArray[0]);

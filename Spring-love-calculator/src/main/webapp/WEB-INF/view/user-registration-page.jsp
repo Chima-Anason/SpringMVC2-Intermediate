@@ -65,6 +65,9 @@
 			<form:input path="communicationDTO.phone"/>
 		</div>
 		
+		
+		<br />
+		
 		<div align="center">
 			<input type="submit" value="register">
 		</div>
