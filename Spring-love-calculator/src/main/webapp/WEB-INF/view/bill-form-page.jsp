@@ -7,18 +7,6 @@
 <meta charset="UTF-8">
 <title>Bill-Form</title>
 
-<style type="text/css">
-
-.error {
-     color: red;
-     position: fixed;
-     text-align: left;
-     margin-left: 30px;
-}
-
-
-</style>
-
 </head>
 <body>
 
@@ -31,8 +19,8 @@
 
 			<br /> 
 			
-<!-- 			<label>Amount :</label> -->
-<%-- 			<form:input path="amount" /> --%>
+			<label>Amount :</label>
+			<form:input path="amount" />
 
 		</div>
 		<br />

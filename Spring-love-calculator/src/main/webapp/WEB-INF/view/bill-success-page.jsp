@@ -12,7 +12,7 @@
 
 	<div align="center">
 		<p>BILL AGAINST THE CREDIT CARD NUMBER</p>
-		<p>${billDTO.creditCard} for an amount of $amount has been
+		<p>${billDTO.creditCard} for an amount of ${billDTO.amount} has been
 			generated</p>
 	</div>
 

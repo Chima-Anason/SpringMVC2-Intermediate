@@ -4,7 +4,7 @@ public class Bill {
 	
 	
 	private CreditCard creditCard;
-	//private Amount amount;
+	private Amount amount;
 	
 	
 	public CreditCard getCreditCard() {
@@ -13,12 +13,12 @@ public class Bill {
 	public void setCreditCard(CreditCard creditCard) {
 		this.creditCard = creditCard;
 	}
-//	public Amount getAmount() {
-//		return amount;
-//	}
-//	public void setAmount(Amount amount) {
-//		this.amount = amount;
-//	}
+	public Amount getAmount() {
+		return amount;
+	}
+	public void setAmount(Amount amount) {
+		this.amount = amount;
+	}
 	
 	
 

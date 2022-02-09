@@ -24,7 +24,7 @@ public class Amount {
 	
 	@Override
 	public String toString() {
-		return getLocalDefinition()+getBillAmount();
+		return getLocalDefinition() + getBillAmount();
 	}
 
 
