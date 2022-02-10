@@ -64,31 +64,41 @@ public class CurrencyFormatter implements Formatter<Amount>{
 			
 			String format = NumberFormat.getCurrencyInstance(locale.US).format(amountArrayAtIndex0);
 			
-			injectSplittedValue(format,amount);
+			//injectSplittedValue(format1,amount);
+			amount.setBillAmount(amountArrayAtIndex0);
+			amount.setLocalDefinition(format);
 			
 			
 		}else if (amountArrayAtIndex1.equalsIgnoreCase("EURO")) {
 
-			String format = NumberFormat.getCurrencyInstance(locale.GERMAN).format(amountArrayAtIndex0);
+			String format = NumberFormat.getCurrencyInstance(locale.GERMANY).format(amountArrayAtIndex0);
 			
-			injectSplittedValue(format,amount);
+			//injectSplittedValue(format,amount);
+			amount.setBillAmount(amountArrayAtIndex0);
+			amount.setLocalDefinition(format);
 			
 		}else if (amountArrayAtIndex1.equalsIgnoreCase("CN")) {
 
 			String format = NumberFormat.getCurrencyInstance(locale.CHINA).format(amountArrayAtIndex0);
 			
-			injectSplittedValue(format,amount);
+			//injectSplittedValue(format,amount);
+			amount.setBillAmount(amountArrayAtIndex0);
+			amount.setLocalDefinition(format);
 			
-		}else if (amountArrayAtIndex1.equalsIgnoreCase("POL")) {
+		}else if (amountArrayAtIndex1.equalsIgnoreCase("POUNDS")) {
 			
 			String format = NumberFormat.getCurrencyInstance(locale.FRANCE).format(amountArrayAtIndex0);
 			
-			injectSplittedValue(format,amount);
+			//injectSplittedValue(format,amount);
+			amount.setBillAmount(amountArrayAtIndex0);
+			amount.setLocalDefinition(format);
 		}else {
 
 			String format = NumberFormat.getCurrencyInstance(locale.US).format(amountArrayAtIndex0);
 			
-			injectSplittedValue(format,amount);
+			//injectSplittedValue(format,amount);
+			amount.setBillAmount(amountArrayAtIndex0);
+			amount.setLocalDefinition(format);
 		}
 
 		
@@ -97,25 +107,25 @@ public class CurrencyFormatter implements Formatter<Amount>{
 	
 	
 	
-	public Amount injectSplittedValue(String format, Amount amount) {
-		
-		//split converted result and set to properties in Amount
-		//Amount amount = new Amount();
-		
-		//splitting the converted result
-		StringBuilder value = new StringBuilder();
-		 for (char c : format.toCharArray()) {
-		     if (Character.isDigit(c) || c == '.' || c == ',') { 
-		    	value.append(c);
-		     } else {
-		    	 amount.setLocalDefinition(Character.toString(c));
-		     }
-		 }
-		 
-		 BigDecimal convertToBigDecimal = new BigDecimal(value.toString());
-         amount.setBillAmount(convertToBigDecimal);
-		
-		return amount;
-	}
+//	public Amount injectSplittedValue(String format, Amount amount) {
+//		
+//		//split converted result and set to properties in Amount
+//		//Amount amount = new Amount();
+//		
+//		//splitting the converted result
+//		StringBuilder value = new StringBuilder();
+//		 for (char c : format.toCharArray()) {
+//		     if (Character.isDigit(c) || c == '.' || c == ',') { 
+//		    	value.append(c);
+//		     } else {
+//		    	 amount.setLocalDefinition(Character.toString(c));
+//		     }
+//		 }
+//		 
+//		 BigDecimal convertToBigDecimal = new BigDecimal(value.toString());
+//         amount.setBillAmount(convertToBigDecimal);
+//		
+//		return amount;
+//	}
 
 }
