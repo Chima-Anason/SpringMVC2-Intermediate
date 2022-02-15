@@ -25,6 +25,9 @@
 	Gender: ${userReg.gender}
 	
 	<br /> 
+	Age: ${userReg.age}
+	
+	<br /> 
 	Email: ${userReg.communicationDTO.email}
 	
 	

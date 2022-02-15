@@ -1,6 +1,12 @@
 package com.seleniumexpress.lc.controllers;
 
+import java.util.List;
+
+import javax.validation.Valid;
+
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -33,8 +39,20 @@ public class RegistrationController {
 	}
 	
 	@RequestMapping("/registration-success")
-	public String processUserRegistration(@ModelAttribute("userReg") UserRegistrationDTO dto) {
+	public String processUserRegistration(@Valid @ModelAttribute("userReg") UserRegistrationDTO dto, BindingResult result) {
 		
+		if (result.hasErrors()) {
+			
+			System.out.println("My page has errors");
+			
+			List<ObjectError> allErrors = result.getAllErrors();
+			
+			for (ObjectError error : allErrors) {
+				System.out.println(error);
+			}
+			
+			return "user-registration-page";
+		}
 		
 		System.out.println("Inside processUserRegistration Method");
 		

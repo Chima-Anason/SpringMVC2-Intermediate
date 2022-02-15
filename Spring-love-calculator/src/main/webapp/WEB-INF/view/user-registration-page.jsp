@@ -6,7 +6,22 @@
 <head>
 <meta charset="UTF-8">
 <title>registration-page</title>
+
+<style type="text/css">
+
+.error {
+     color: red;
+     position: fixed;
+     text-align: left;
+     margin-left: 30px;
+}
+
+
+</style>
+
 </head>
+
+
 <body>
 	<h1 align="center">Please register here</h1>
 
@@ -51,6 +66,12 @@
 		Male<form:radiobutton path="gender" value="male"/>
 		Female<form:radiobutton path="gender" value="female"/>
 		
+		<br />
+		
+		<label>Age :</label>
+		<form:input path="age" />
+		<form:errors path="age" cssClass="error"/>
+
 		<br />
 		
 		</div>

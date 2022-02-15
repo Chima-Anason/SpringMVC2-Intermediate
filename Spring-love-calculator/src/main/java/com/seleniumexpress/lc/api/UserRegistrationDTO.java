@@ -1,5 +1,7 @@
 package com.seleniumexpress.lc.api;
 
+import com.seleniumexpress.lc.Validator.Age;
+
 public class UserRegistrationDTO {
 	
 	
@@ -9,6 +11,10 @@ public class UserRegistrationDTO {
 	private String countryName;
 	private String[] hobbies;
 	private String gender;
+	
+	
+	@Age(lower = 30, upper = 75, message = "age should be between 30-75")
+	private Integer age;
 	
 	private CommunicationDTO communicationDTO;
 	
@@ -55,6 +61,13 @@ public class UserRegistrationDTO {
 	public void setCommunicationDTO(CommunicationDTO communicationDTO) {
 		this.communicationDTO = communicationDTO;
 	}
+	public Integer getAge() {
+		return age;
+	}
+	public void setAge(Integer age) {
+		this.age = age;
+	}
+
 
 
 }
