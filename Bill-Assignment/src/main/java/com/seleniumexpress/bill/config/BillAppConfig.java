@@ -8,6 +8,8 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
+import com.seleniumexpress.bill.converters.CreditCardConverterObjToString;
+import com.seleniumexpress.bill.converters.CreditCardConverterStringToObject;
 import com.seleniumexpress.bill.formatter.CreditCardFormatter;
 import com.seleniumexpress.bill.formatter.CurrencyFormatter;
 
@@ -29,17 +31,22 @@ public class BillAppConfig implements WebMvcConfigurer{
 	}
 	
 	
-//	@Override
-//	public void addFormatters(FormatterRegistry registry) {
-//		
-//		
-//		System.out.println("Inside addFormatter Method in app config class");
-//
-//		
-//		//register the CreditCardFormatter
+	@Override
+	public void addFormatters(FormatterRegistry registry) {
+		
+		
+		System.out.println("Inside addFormatter Method in app config class");
+
+		
+		//register the CreditCardFormatter
 //		registry.addFormatter(new CreditCardFormatter());
-//		
-//		//register the CurrencyFormatter
+		
+		//register the CurrencyFormatter
 //		registry.addFormatter(new CurrencyFormatter());
-//	}
+		
+		
+		//register the CreditCard Converter
+		registry.addConverter(new CreditCardConverterStringToObject());
+		registry.addConverter(new CreditCardConverterObjToString());
+	}
 }

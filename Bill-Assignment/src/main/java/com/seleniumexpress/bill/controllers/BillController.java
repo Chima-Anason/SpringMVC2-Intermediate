@@ -73,8 +73,8 @@ public class BillController {
 		binder.addCustomFormatter(new CurrencyFormatter());
 		
 		//register a custom Editor for Credit card Editor = also works like Credit card formatter
-		CreditCardEditor creditCardEditor = new CreditCardEditor();
-		binder.registerCustomEditor(CreditCard.class, "creditCard", creditCardEditor);
+//		CreditCardEditor creditCardEditor = new CreditCardEditor();
+//		binder.registerCustomEditor(CreditCard.class, "creditCard", creditCardEditor);
 		
 		
 	}
