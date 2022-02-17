@@ -20,6 +20,7 @@ import com.seleniumexpress.bill.api.Bill;
 import com.seleniumexpress.bill.api.CreditCard;
 import com.seleniumexpress.bill.formatter.CreditCardFormatter;
 import com.seleniumexpress.bill.formatter.CurrencyFormatter;
+import com.seleniumexpress.bill.propertyEditor.CreditCardEditor;
 
 
 @Controller
@@ -68,8 +69,13 @@ public class BillController {
 		
 		
 		//Another way to register our formatter
-		binder.addCustomFormatter(new CreditCardFormatter());
+//		binder.addCustomFormatter(new CreditCardFormatter());
 		binder.addCustomFormatter(new CurrencyFormatter());
+		
+		//register a custom Editor for Credit card Editor = also works like Credit card formatter
+		CreditCardEditor creditCardEditor = new CreditCardEditor();
+		binder.registerCustomEditor(CreditCard.class, "creditCard", creditCardEditor);
+		
 		
 	}
 
