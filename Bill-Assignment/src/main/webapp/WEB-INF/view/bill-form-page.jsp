@@ -21,6 +21,11 @@
 			
 			<label>Amount :</label>
 			<form:input path="amount" />
+			
+			<br /> 
+			
+			<label>Date :</label>
+			<form:input path="date" />
 
 		</div>
 		<br />

@@ -1,11 +1,12 @@
 package com.seleniumexpress.bill.api;
 
-
+import java.util.Date;
 
 public class Bill {
 	
 	private CreditCard creditCard;
 	private Amount amount;
+	private Date date;
 	
 	
 	public CreditCard getCreditCard() {
@@ -19,6 +20,12 @@ public class Bill {
 	}
 	public void setAmount(Amount amount) {
 		this.amount = amount;
+	}
+	public Date getDate() {
+		return date;
+	}
+	public void setDate(Date date) {
+		this.date = date;
 	}
 	
 	
