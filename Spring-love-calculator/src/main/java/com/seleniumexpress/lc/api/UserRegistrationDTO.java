@@ -1,10 +1,12 @@
 package com.seleniumexpress.lc.api;
 
+import javax.validation.constraints.NotEmpty;
+
 import com.seleniumexpress.lc.Validator.Age;
 
 public class UserRegistrationDTO {
 	
-	
+	@NotEmpty(message = "* Can not be empty")
 	private String name;
 	private String userName;
 	private char[] password;
