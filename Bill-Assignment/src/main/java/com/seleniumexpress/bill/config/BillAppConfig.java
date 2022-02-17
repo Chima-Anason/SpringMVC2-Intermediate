@@ -29,17 +29,17 @@ public class BillAppConfig implements WebMvcConfigurer{
 	}
 	
 	
-	@Override
-	public void addFormatters(FormatterRegistry registry) {
-		
-		
-		System.out.println("Inside addFormatter Method in app config class");
-
-		
-		//register the CreditCardFormatter
-		registry.addFormatter(new CreditCardFormatter());
-		
-		//register the CurrencyFormatter
-		registry.addFormatter(new CurrencyFormatter());
-	}
+//	@Override
+//	public void addFormatters(FormatterRegistry registry) {
+//		
+//		
+//		System.out.println("Inside addFormatter Method in app config class");
+//
+//		
+//		//register the CreditCardFormatter
+//		registry.addFormatter(new CreditCardFormatter());
+//		
+//		//register the CurrencyFormatter
+//		registry.addFormatter(new CurrencyFormatter());
+//	}
 }

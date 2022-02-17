@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.seleniumexpress.bill.api.Bill;
 import com.seleniumexpress.bill.api.CreditCard;
+import com.seleniumexpress.bill.formatter.CreditCardFormatter;
+import com.seleniumexpress.bill.formatter.CurrencyFormatter;
 
 
 @Controller
@@ -60,9 +62,14 @@ public class BillController {
 		
 		
 		//Register a custom Editor for Amount field
-		NumberFormat numberFormat = new DecimalFormat("##,###.00");
-		CustomNumberEditor numberEditor = new CustomNumberEditor(BigDecimal.class, numberFormat, true);
-		binder.registerCustomEditor(BigDecimal.class, "billAmount",numberEditor);
+//		NumberFormat numberFormat = new DecimalFormat("##,###.00");
+//		CustomNumberEditor numberEditor = new CustomNumberEditor(BigDecimal.class, numberFormat, true);
+//		binder.registerCustomEditor(BigDecimal.class, "billAmount",numberEditor);
+		
+		
+		//Another way to register our formatter
+		binder.addCustomFormatter(new CreditCardFormatter());
+		binder.addCustomFormatter(new CurrencyFormatter());
 		
 	}
 
