@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.seleniumexpress.lc.api.CommunicationDTO;
 import com.seleniumexpress.lc.api.Phone;
 import com.seleniumexpress.lc.api.UserRegistrationDTO;
+import com.seleniumexpress.lc.propertyEditor.NamePropertyEditor;
 
 @Controller
 public class RegistrationController {
@@ -72,8 +73,14 @@ public class RegistrationController {
 		
 		System.out.println("Inside the init binder method.....");
 		
+		//Register property editor for trimming string
 		StringTrimmerEditor editor = new StringTrimmerEditor(true);
 		binder.registerCustomEditor(String.class, "name", editor);
+		
+		
+		//register our created custom property editor to convert to uppercase
+		NamePropertyEditor namePropertyEditor = new NamePropertyEditor();
+		binder.registerCustomEditor(String.class, "name", namePropertyEditor);
 		
 		//binder.setDisallowedFields("name");
 		
