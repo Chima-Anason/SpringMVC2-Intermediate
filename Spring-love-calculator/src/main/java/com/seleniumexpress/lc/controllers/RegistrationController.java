@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.validation.Valid;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -13,6 +14,8 @@ import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.seleniumexpress.lc.Validator.EmailValidator;
+import com.seleniumexpress.lc.Validator.UserNameValidator;
 import com.seleniumexpress.lc.api.CommunicationDTO;
 import com.seleniumexpress.lc.api.Phone;
 import com.seleniumexpress.lc.api.UserRegistrationDTO;
@@ -20,6 +23,9 @@ import com.seleniumexpress.lc.propertyEditor.NamePropertyEditor;
 
 @Controller
 public class RegistrationController {
+	
+	@Autowired
+	private EmailValidator emailValidator;
 	
 	@RequestMapping("/register")
 	public String showRegistrationPage(@ModelAttribute("userReg") UserRegistrationDTO dto) {
@@ -45,7 +51,12 @@ public class RegistrationController {
 	@RequestMapping("/registration-success")
 	public String processUserRegistration(@Valid @ModelAttribute("userReg") UserRegistrationDTO dto, BindingResult result) {
 		
+		System.out.println("Inside processUserRegistration Method");
+		
 		System.out.println("the user name " + "|" + dto.getName()+ "|");
+		
+		//calling the email validator method
+		emailValidator.validate(dto, result);
 		
 		if (result.hasErrors()) {
 			
@@ -60,7 +71,7 @@ public class RegistrationController {
 			return "user-registration-page";
 		}
 		
-		System.out.println("Inside processUserRegistration Method");
+		
 		
 
 		return "registration-success-page";
@@ -83,6 +94,10 @@ public class RegistrationController {
 		binder.registerCustomEditor(String.class, "name", namePropertyEditor);
 		
 		//binder.setDisallowedFields("name");
+		
+		//register Custom Spring Validator(UserNameValidator)
+		binder.addValidators(new UserNameValidator());
+//		binder.addValidators(new EmailValidator());
 		
 	}
 

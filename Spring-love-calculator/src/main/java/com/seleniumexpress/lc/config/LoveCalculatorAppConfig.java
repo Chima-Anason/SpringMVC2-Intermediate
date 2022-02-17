@@ -16,7 +16,7 @@ import com.seleniumexpress.lc.formatter.PhoneNumberFormatter;
 
 @EnableWebMvc
 @Configuration
-@ComponentScan(basePackages = "com.seleniumexpress.lc.controllers")
+@ComponentScan(basePackages = "com.seleniumexpress.lc")
 public class LoveCalculatorAppConfig implements WebMvcConfigurer{
 
 	
