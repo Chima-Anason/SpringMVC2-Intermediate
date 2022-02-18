@@ -44,6 +44,10 @@ public class LCAppController {
 		}
 		
 		
+		//write a service which will calculate the % between the username and the crushname
+		
+		
+		
 		return "result-page";
 		
 	}

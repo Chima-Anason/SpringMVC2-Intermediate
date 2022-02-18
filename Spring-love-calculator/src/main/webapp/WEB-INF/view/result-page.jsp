@@ -10,9 +10,17 @@
 
 	<h1 align="center">Love Calculator</h1>
 	<hr>
+	
+	<h2>The Love Calculator Predicts :</h2>
+	<br>
 
-	<p>User Name is : ${userInfo.userName}</p>
-	<p>Crush Name is : ${userInfo.crushName}</p>
+	${userInfo.userName} and ${userInfo.crushName} are 
+	<br>
+	FRIENDS
+	
+	<br>
+	
+	<a href = "/Spring-love-calculator/sendEmail/${userInfo.userName}">Send Result to Your Email</a>
 	
 </body>
 </html>
