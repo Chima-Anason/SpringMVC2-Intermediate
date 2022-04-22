@@ -3,6 +3,7 @@ package com.seleniumexpress.lc.controllers;
 import java.util.List;
 
 import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
@@ -19,8 +20,19 @@ public class LCAppController {
 
 	
 	@RequestMapping("/")
-	public String showHomePage(@ModelAttribute("userInfo") UserInfoDTO userInfodto) {
+	public String showHomePage(@ModelAttribute("userInfo") UserInfoDTO userInfodto, HttpServletRequest request) {
 		
+		//showing the cookie automatically on the form after the page is reloaded
+		Cookie[] cookies = request.getCookies();
+		
+		for(Cookie temp : cookies) {
+			
+			if("lcApp.userName".equals(temp.getName())) {
+				
+				String myUserName = temp.getValue();
+				userInfodto.setUserName(myUserName);
+			}
+		}
 		
 		
 		return "home-page";
