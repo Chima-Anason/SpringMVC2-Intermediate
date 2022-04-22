@@ -20,7 +20,7 @@
 	
 	<br>
 	
-	<a href = "/Spring-love-calculator/sendEmail/${userInfo.userName}">Send Result to Your Email</a>
+	<a href = "/Spring-love-calculator/sendEmail">Send Result to Your Email</a>
 	
 </body>
 </html>
