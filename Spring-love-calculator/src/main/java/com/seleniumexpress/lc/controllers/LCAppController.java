@@ -2,9 +2,8 @@ package com.seleniumexpress.lc.controllers;
 
 import java.util.List;
 
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.stereotype.Controller;
@@ -20,19 +19,8 @@ public class LCAppController {
 
 	
 	@RequestMapping("/")
-	public String showHomePage(@ModelAttribute("userInfo") UserInfoDTO userInfodto, HttpServletRequest request) {
+	public String showHomePage(@ModelAttribute("userInfo") UserInfoDTO userInfodto) {
 		
-		//showing the cookie automatically on the form after the page is reloaded
-		Cookie[] cookies = request.getCookies();
-		
-		for(Cookie temp : cookies) {
-			
-			if("lcApp.userName".equals(temp.getName())) {
-				
-				String myUserName = temp.getValue();
-				userInfodto.setUserName(myUserName);
-			}
-		}
 		
 		
 		return "home-page";
@@ -42,7 +30,7 @@ public class LCAppController {
 
 	//Using @Valid and BindingResult for Spring MVC form validation
 	@RequestMapping("/process-homepage")
-	private String showResultPage(@Valid @ModelAttribute("userInfo") UserInfoDTO userInfoDTO, BindingResult result, HttpServletResponse response) {
+	private String showResultPage(@Valid @ModelAttribute("userInfo") UserInfoDTO userInfoDTO, BindingResult result, HttpServletRequest request) {
 		
 		
 		System.out.println(userInfoDTO.isTermAndCondition());
@@ -57,13 +45,9 @@ public class LCAppController {
 			return "home-page";
 		}
 		
-		//Create a cookie for the user name
-		Cookie theCookie = new Cookie("lcApp.userName", userInfoDTO.getUserName());
-		theCookie.setMaxAge(60*60*24); //expiring time of the cookie
-		
-		
-		//add the cookie to the response
-		response.addCookie(theCookie);
+		//Create a session to capture the userName and it can be accessed by any jsp page or controller
+		HttpSession session = request.getSession();
+		session.setAttribute("userName", userInfoDTO.getUserName());
 		
 		
 		//write a service which will calculate the % between the username and the crushname

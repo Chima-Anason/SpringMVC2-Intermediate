@@ -1,10 +1,10 @@
 package com.seleniumexpress.lc.controllers;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.seleniumexpress.lc.api.EmailDTO;
@@ -13,10 +13,9 @@ import com.seleniumexpress.lc.api.EmailDTO;
 public class EmailController {
 
 	@RequestMapping("/sendEmail")
-	public String sendEmail(@CookieValue("lcApp.userName") String userName, Model model) {
+	public String sendEmail( Model model) {
 		
 		
-		model.addAttribute("userName",userName);
 		model.addAttribute("emailDTO", new EmailDTO());
 		//model.addAttribute("userName", userName.toUpperCase());
 		
@@ -26,8 +25,12 @@ public class EmailController {
 	
 	
 	@RequestMapping("/process-email")
-	public String processEmail(@ModelAttribute("emailDTO") EmailDTO emailDTO) {
+	public String processEmail(@ModelAttribute("emailDTO") EmailDTO emailDTO, HttpSession session, Model model) {
 		
+		String userName = (String) session.getAttribute("userName");
+		String newUsername = "Mr " + userName;
+		
+		model.addAttribute("userName", newUsername);
 		
 		return "process-email-page";
 	}
