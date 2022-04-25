@@ -25,12 +25,9 @@ public class EmailController {
 	
 	
 	@RequestMapping("/process-email")
-	public String processEmail(@ModelAttribute("emailDTO") EmailDTO emailDTO, HttpSession session, Model model) {
+	public String processEmail(@ModelAttribute("emailDTO") EmailDTO emailDTO) {
 		
-		String userName = (String) session.getAttribute("userName");
-		String newUsername = "Mr " + userName;
 		
-		model.addAttribute("userName", newUsername);
 		
 		return "process-email-page";
 	}
