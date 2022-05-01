@@ -36,7 +36,7 @@ public class firstController {
 		
 		
 		//removing the session attributes from the session scope
-		status.setComplete();
+		//status.setComplete();
 		
 		model1.addAttribute("next", "/third");
 		
@@ -53,6 +53,8 @@ public class firstController {
 		
 		
 		model.addAttribute("lastName", lastname);
+		
+		model.addAttribute("next", "/normalMethod");
 		
 		return "index";
 	}
