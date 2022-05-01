@@ -4,6 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 
 @Controller
 @SessionAttributes({"firstName","lastName"})
@@ -22,7 +23,7 @@ public class firstController {
 	
 	
 	@RequestMapping("/second")
-	public String handlermethod2(Model model1) {
+	public String handlermethod2(Model model1,SessionStatus status) {
 		
 		String firstname = (String)model1.getAttribute("firstName");
 		System.out.println(firstname);
@@ -33,6 +34,9 @@ public class firstController {
 		//model1.addAttribute("firstName", firstname);
 		//model1.addAttribute("lastName", lastname);
 		
+		
+		//removing the session attributes from the session scope
+		status.setComplete();
 		
 		model1.addAttribute("next", "/third");
 		
