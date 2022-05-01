@@ -1,5 +1,8 @@
 package com.seleniumexpress.lc.controllers;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,12 +14,15 @@ import org.springframework.web.bind.support.SessionStatus;
 public class firstController {
 	
 	@RequestMapping("/first")
-	public String handlermethod1(Model model) {
+	public String handlermethod1(Model model, HttpServletRequest request) {
 		
 		model.addAttribute("firstName", "Chima");
 		model.addAttribute("lastName", "John");
 		
 		model.addAttribute("next", "/second");
+		
+		HttpSession session = request.getSession();
+		session.setAttribute("address", "Suleja");
 		
 		return "index";
 	}
@@ -36,7 +42,7 @@ public class firstController {
 		
 		
 		//removing the session attributes from the session scope
-		//status.setComplete();
+		status.setComplete();
 		
 		model1.addAttribute("next", "/third");
 		
@@ -45,7 +51,7 @@ public class firstController {
 	
 	
 	@RequestMapping("/third")
-	public String handlermethod3(Model model) {
+	public String handlermethod3(Model model, HttpSession session) {
 		
 		
 		String lastname = (String)model.getAttribute("lastName");
@@ -55,6 +61,11 @@ public class firstController {
 		model.addAttribute("lastName", lastname);
 		
 		model.addAttribute("next", "/normalMethod");
+		
+		String address = (String)session.getAttribute("address");
+		String newAddress = address + " Home sweet home";
+		
+		model.addAttribute("address", newAddress);
 		
 		return "index";
 	}
