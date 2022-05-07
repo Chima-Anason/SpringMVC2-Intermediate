@@ -1,17 +1,23 @@
 package com.seleniumexpress.lc.controllers;
 
-import javax.servlet.http.HttpSession;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.SessionAttribute;
 
 import com.seleniumexpress.lc.api.EmailDTO;
+import com.seleniumexpress.lc.api.UserInfoDTO;
+import com.seleniumexpress.lc.service.LCAppEmailService;
+import com.seleniumexpress.lc.service.LCAppEmailServiceImpl;
 
 @Controller
 public class EmailController {
 
+	@Autowired
+	private LCAppEmailServiceImpl lcAppEmailService;
+	
 	@RequestMapping("/sendEmail")
 	public String sendEmail( Model model) {
 		
@@ -25,9 +31,11 @@ public class EmailController {
 	
 	
 	@RequestMapping("/process-email")
-	public String processEmail(@ModelAttribute("emailDTO") EmailDTO emailDTO) {
+	public String processEmail(@SessionAttribute("userInfo") UserInfoDTO userInfoDTO,
+			@ModelAttribute("emailDTO") EmailDTO emailDTO) {
 		
 		
+		lcAppEmailService.sendEmail(userInfoDTO.getUserName(),emailDTO.getUserEmail(),"FRIEND");
 		
 		return "process-email-page";
 	}
