@@ -1,13 +1,16 @@
 package com.seleniumexpress.lc.config;
 
 import java.util.Properties;
+import java.util.logging.Logger;
 
-import org.springframework.beans.propertyeditors.StringTrimmerEditor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.support.ResourceBundleMessageSource;
+import org.springframework.core.env.Environment;
 import org.springframework.format.FormatterRegistry;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
@@ -22,7 +25,13 @@ import com.seleniumexpress.lc.formatter.PhoneNumberFormatter;
 @EnableWebMvc
 @Configuration
 @ComponentScan(basePackages = "com.seleniumexpress.lc")
+@PropertySource("classpath:email.properties")
 public class LoveCalculatorAppConfig implements WebMvcConfigurer{
+	
+	@Autowired
+	private Environment env;
+	
+	Logger logger = Logger.getLogger(LoveCalculatorAppConfig.class.getName());
 
 	
 	//Set up View resolver
@@ -63,19 +72,35 @@ public class LoveCalculatorAppConfig implements WebMvcConfigurer{
 	public JavaMailSender getJavaMailSender() {
 
 		JavaMailSenderImpl javaMailSenderImpl = new JavaMailSenderImpl();
-		javaMailSenderImpl.setHost("smtp.gmail.com");
-		javaMailSenderImpl.setUsername("chitech994@gmail.com");
-		javaMailSenderImpl.setPassword("Chitech1234");
-		javaMailSenderImpl.setPort(587);
+		
+		//System.out.println(env.getProperty("mail.host"));
+		logger.info(">>>>>>>>Fetching the host value " + env.getProperty("mail.host"));
+		
+		javaMailSenderImpl.setHost(env.getProperty("mail.host"));
+		javaMailSenderImpl.setUsername(env.getProperty("mail.username"));
+		javaMailSenderImpl.setPassword(env.getProperty("mail.password"));
+		javaMailSenderImpl.setPort(getIntProperty("mail.port"));
 
+
+		javaMailSenderImpl.setJavaMailProperties(getMailProperties());
+
+		return javaMailSenderImpl;
+	}
+
+
+	private Properties getMailProperties() {
 		Properties mailProperties = new Properties();
 		mailProperties.put("mail.smtp.starttls.enable", true);
 		mailProperties.put("mail.smtp.auth", true);
 		mailProperties.put("mail.smtp.ssl.trust", "smtp.gmail.com");
+		return mailProperties;
+	}
+	
+	int getIntProperty(String key) {
 
-		javaMailSenderImpl.setJavaMailProperties(mailProperties);
+		String property = env.getProperty(key);
 
-		return javaMailSenderImpl;
+		return Integer.parseInt(property);
 	}
 	
 	
@@ -95,6 +120,9 @@ public class LoveCalculatorAppConfig implements WebMvcConfigurer{
 		
 		return validator();
 	}
+	
+	
+	
 	
 	
 	
