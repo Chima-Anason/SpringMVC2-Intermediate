@@ -18,7 +18,7 @@ public class UserInfoDTO {
 	@AssertTrue(message = "You have to agree to use our application")
 	private boolean termAndCondition;
 	
-	
+	private String result;
 	
 	
 	public String getUserName() {
@@ -44,6 +44,12 @@ public class UserInfoDTO {
 	
 	
 	
+	public String getResult() {
+		return result;
+	}
+	public void setResult(String result) {
+		this.result = result;
+	}
 	@Override
 	public String toString() {
 		return "UserInfoDTO [userName=" + userName + ", crushName=" + crushName + "]";

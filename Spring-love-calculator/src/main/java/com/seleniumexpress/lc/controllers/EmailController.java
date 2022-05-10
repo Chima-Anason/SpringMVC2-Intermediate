@@ -35,7 +35,7 @@ public class EmailController {
 			@ModelAttribute("emailDTO") EmailDTO emailDTO) {
 		
 		
-		lcAppEmailService.sendEmail(userInfoDTO.getUserName(),emailDTO.getUserEmail(),"FRIEND");
+		//lcAppEmailService.sendEmail(userInfoDTO.getUserName(),emailDTO.getUserEmail(),"FRIEND");
 		
 		return "process-email-page";
 	}

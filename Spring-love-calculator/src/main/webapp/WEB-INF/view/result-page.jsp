@@ -16,7 +16,7 @@
 
 	${userInfo.userName} and ${userInfo.crushName} are 
 	<br>
-	FRIENDS
+	${userInfo.result}
 	
 	<br>
 	

@@ -9,6 +9,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
+import org.springframework.context.annotation.PropertySources;
 import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.core.env.Environment;
 import org.springframework.format.FormatterRegistry;
@@ -25,7 +26,7 @@ import com.seleniumexpress.lc.formatter.PhoneNumberFormatter;
 @EnableWebMvc
 @Configuration
 @ComponentScan(basePackages = "com.seleniumexpress.lc")
-@PropertySource("classpath:email.properties")
+@PropertySources({@PropertySource("classpath:email.properties")})
 public class LoveCalculatorAppConfig implements WebMvcConfigurer{
 	
 	@Autowired
