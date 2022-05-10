@@ -20,7 +20,7 @@
 
 </style>
 
-<script type="text/javascript">
+<!-- <script type="text/javascript">
 	function validateTextbox() {
 		console.log("i am in")
 		var userName = document.getElementById("yn").value
@@ -34,7 +34,7 @@
 			return true;
 		}
 	}
-</script>
+</script> -->
 
 </head>
 <body>

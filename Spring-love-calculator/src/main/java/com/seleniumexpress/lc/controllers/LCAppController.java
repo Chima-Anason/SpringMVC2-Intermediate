@@ -36,9 +36,10 @@ public class LCAppController {
 
 	// Using @Valid and BindingResult for Spring MVC form validation
 	@RequestMapping("/process-homepage")
-	private String showResultPage(@Valid Model model, UserInfoDTO userInfoDTO, BindingResult result) {
+	private String showResultPage(Model model, @Valid UserInfoDTO userInfoDTO, BindingResult result) {
 
 		model.addAttribute("userInfo",userInfoDTO);
+		model.addAttribute(BindingResult.MODEL_KEY_PREFIX + "userInfo", result);
 		
 		System.out.println(userInfoDTO.isTermAndCondition());
 
