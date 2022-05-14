@@ -15,20 +15,26 @@ import com.seleniumexpress.lc.api.WebsiteInfoDTO;
 @SessionAttributes("websiteInfo")
 public class MyWebsiteController {
 	
-	@ModelAttribute("websiteInfo")
-	public WebsiteInfoDTO getWebsiteInfoDTO() {
-		
-		System.out.println("*************************");
-		System.out.println("@ModelAttribute : Inside getWebsiteInfoDTO()");
-		
-		WebsiteInfoDTO websiteInfoDTO = new WebsiteInfoDTO();
-		
-		websiteInfoDTO.setWebsiteName("Chitech.com");
-		websiteInfoDTO.setWebsiteCategory("Education");
-		
-		System.out.println("*************************");
+//	@ModelAttribute("websiteInfo")
+//	public WebsiteInfoDTO getWebsiteInfoDTO() {
+//		
+//		System.out.println("*************************");
+//		System.out.println("@ModelAttribute : Inside getWebsiteInfoDTO()");
+//		
+//		WebsiteInfoDTO websiteInfoDTO = new WebsiteInfoDTO();
+//		
+//		websiteInfoDTO.setWebsiteName("Chitech.com");
+//		websiteInfoDTO.setWebsiteCategory("Education");
+//		
+//		System.out.println("*************************");
+//	
+//		return websiteInfoDTO;
+//	}
 	
-		return websiteInfoDTO;
+	@ModelAttribute("header123")
+	public String websiteHeader() {
+		
+		return "ChiTech";
 	}
 
 	@RequestMapping("/showInfo")
