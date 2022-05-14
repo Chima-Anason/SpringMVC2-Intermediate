@@ -4,6 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.seleniumexpress.lc.api.WebsiteInfoDTO;
 
@@ -11,6 +12,7 @@ import com.seleniumexpress.lc.api.WebsiteInfoDTO;
 @ControllerAdvice
 //@ControllerAdvice(assignableTypes = {TestController.class, xyz.class}) -> Use this way to Restrict the ControllerAdvice to some specific controllers
 //@ControllerAdvice(basePackages = {"com.seleniumexpress.lc.controller", "com.seleniumexpress.lc.xyz"})  -> Use this way to Restrict the ControllerAdvice to some specific packages
+@SessionAttributes("websiteInfo")
 public class MyWebsiteController {
 	
 	@ModelAttribute("websiteInfo")
@@ -34,6 +36,7 @@ public class MyWebsiteController {
 		
 		System.out.println("@RequestMapping : Inside showWebsiteInfo()");
 		
+
 		
 		System.out.println(websiteInfoDTO.getWebsiteName());
 		System.out.println(websiteInfoDTO.getWebsiteCategory());
